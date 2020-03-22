@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <p>Input form</p>
+    <form action="#" th:action="@{/calculate}" th:object="${inputs}" method="post">
+        <div class="field">
+            <label for="amount">Amount</label>
+            <input type="text" id="amount" th:field="*{amount}" autofocus>
+        </div>
+        <div class="field">
+            <label for="currency">Currency</label>
+            <select name="currency" id="currency" th:field="*{currency}">
+                <option th:each="currency: ${currencies}" th:text="${currency}" th:value="${currency}">
+                </option>
+            </select>
+        </div>
+        <div class="field">
+        </div>
+        <button type="submit">Calculate</button>
+    </form>
+    <div class="result" th:if="${result} != null" th:text="${result} + ' €'">
+
+    </div>
+
+</body>
+</html>
